@@ -1,0 +1,16 @@
+{
+	"miniprogramRoot": "./",
+	"cloudfunctionRoot": "cloudfunctions/",
+	"setting": {
+		"urlCheck": true,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true,
+		"enhance": true
+	},
+	"appid": "wx2dd60ffdc3f8f2bb",
+	"projectname": "cml-cloud",
+	"libVersion": "2.8.1",
+	"simulatorType": "wechat"
+}

@@ -1,0 +1,125 @@
+<template>
+  <view class="container" >
+    <view class="chatroom">
+      <view class="header">
+        <!-- display number of people in the room -->
+        <view class="left"></view>
+        <!-- room name -->
+        <!-- reserved -->
+        <view class="right"></view>
+      </view>
+
+      <!-- message sender -->
+      <view class="footer">
+        <view class="message-sender" c-if="{{!userInfo}}">
+          <button 
+            open-type="getUserInfo" 
+            c-bind:getuserinfo="onGetUserInfo"
+            class="userinfo"
+            text="请先登录后参与聊天"
+          ></button>
+        </view>
+      </view>
+
+</view>
+  </view>
+</template>
+
+<script>
+
+class Room   {
+
+  data = {
+  }
+
+  computed = {
+  }
+
+  watch  = {
+  }
+
+  methods = {
+    onGetUserInfo: function(e) {
+      if (!this.logged && e.detail.userInfo) {
+        console.log('onGetUserInfo',e)
+        // this.setData({
+        //   logged: true,
+        //   avatarUrl: e.detail.userInfo.avatarUrl,
+        //   userInfo: e.detail.userInfo
+        // })
+      }
+    },
+  }
+
+  beforeCreate(query) {
+  }
+
+  created(query) {
+  }
+
+  beforeMount(query) {
+  }
+
+  onShow() {
+  }
+
+  mounted() {
+  }
+
+  onHide() {
+  }
+
+  beforeDestroy() {
+  }
+
+  destroyed() {
+  }
+}
+
+export default new Room();
+</script>
+
+<style>
+.container {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding-top: 80rpx;
+  padding-bottom: 30rpx;
+}
+</style>
+
+<script cml-type="json">
+{
+  "base": {
+    "usingComponents": {}
+  },
+  "qq": {
+    "navigationBarTitleText": "index",
+    "backgroundTextStyle": "dark",
+    "backgroundColor": "#E2E2E2"
+  },
+  "wx": {
+    "navigationBarTitleText": "index",
+    "backgroundTextStyle": "dark",
+    "backgroundColor": "#E2E2E2"
+  },
+  "alipay": {
+    "defaultTitle": "index",
+    "pullRefresh": false,
+    "allowsBounceVertical": "YES",
+    "titleBarColor": "#ffffff"
+  },
+  "baidu": {
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "index",
+    "backgroundColor": "#ffffff",
+    "backgroundTextStyle": "dark",
+    "enablePullDownRefresh": false,
+    "onReachBottomDistance": 50
+  }
+}
+</script>
