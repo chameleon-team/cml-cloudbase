@@ -5,6 +5,7 @@ const publicPath = '//www.static.chameleon.com/cml';
 const apiPrefix = 'https://api.chameleon.com';
 
 cml.config.merge({
+  enableLinter: false,
   check: {
     enable: false,
   },

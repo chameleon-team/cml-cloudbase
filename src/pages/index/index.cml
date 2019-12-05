@@ -26,7 +26,7 @@
           </view>
           <!-- 云调用 -->
           <view class='common'>
-            <text class="avatar-text" c-bind:tap="jump('/pages/add-function/add-function')">云调用</text>
+            <text class="avatar-text" c-bind:tap="jump('/pages/openapi/openapi')">云调用</text>
           </view>
         </view>
       </scroller>

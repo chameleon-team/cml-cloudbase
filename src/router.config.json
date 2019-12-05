@@ -49,6 +49,24 @@
       "path": "/pages/openapi/openapi",
       "name": "即时通讯",
       "mock": "index.php"
+    },
+    {
+      "url": "/cml/h5/serverapi",
+      "path": "/pages/serverapi/serverapi",
+      "name": "即时通讯",
+      "mock": "index.php"
+    },
+    {
+      "url": "/cml/h5/cloudid",
+      "path": "/pages/cloudid/cloudid",
+      "name": "即时通讯",
+      "mock": "index.php"
+    },
+    {
+      "url": "/cml/h5/callback",
+      "path": "/pages/callback/callback",
+      "name": "即时通讯",
+      "mock": "index.php"
     }
   ]
 }
