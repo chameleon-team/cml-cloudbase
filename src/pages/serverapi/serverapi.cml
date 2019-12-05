@@ -140,9 +140,11 @@ class Serverapi   {
   }
 
   beforeCreate(query) {
+    
   }
 
   created(query) {
+    console.log('query',query)
   }
 
   beforeMount(query) {
