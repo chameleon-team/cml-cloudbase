@@ -1,5 +1,4 @@
 {
-	"miniprogramRoot": "./",
 	"cloudfunctionRoot": "cloudfunctions/",
 	"setting": {
 		"urlCheck": true,
@@ -10,7 +9,8 @@
 		"enhance": true
 	},
 	"appid": "wx2dd60ffdc3f8f2bb",
-	"projectname": "cml-cloud",
+	"projectname": "chameleon-x-cloud",
 	"libVersion": "2.8.1",
-	"simulatorType": "wechat"
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {}
 }

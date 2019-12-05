@@ -4,6 +4,7 @@ const publicPath = '//www.static.chameleon.com/cml';
 // 设置api请求前缀
 const apiPrefix = 'https://api.chameleon.com';
 const path = require('path');
+const fs = require('fs');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 cml.config.merge({
   enableLinter: false,
@@ -59,45 +60,40 @@ cml.config.merge({
       publicPath: `${publicPath}/wx/`,
       apiPrefix
     }
-  },
-  cloudConfig:{
-    wx:{
-      "miniprogramRoot": "miniRoot/",
-      "cloudfunctionRoot": "cloudfunctions/",
-      "setting": {
-        "urlCheck": true,
-        "es6": true,
-        "postcss": true,
-        "minified": true,
-        "newFeature": true,
-        "enhance": true
-      },
-      "appid": "wx2dd60ffdc3f8f2bb",
-      "projectname": "cml-cloud",
-      "libVersion": "2.8.1",
-      "simulatorType": "wechat"
-    }
   }
 })
 cml.utils.plugin('webpackConfig', function(params) {
   let { type, media, webpackConfig } = params
   if (type === 'wx') {
     debugger;
-    const wxCloudConfig = cml.config.get().cloudConfig.wx;//拿到微信小程序云开发的配置，这里可以进行你想要的操作；
-    const outputPath = webpackConfig.output.path;
-    webpackConfig.output.path = path.resolve(outputPath,wxCloudConfig.miniprogramRoot)
-    console.log(cml.config.get().cloudConfig.wx)
-    console.log(cml.projectRoot);
-    const from = path.resolve(cml.projectRoot,wxCloudConfig.cloudfunctionRoot);
-    const to = path.resolve(outputPath,wxCloudConfig.cloudfunctionRoot);
-    webpackConfig.plugins.push(
-      new CopyWebpackPlugin([
-        {
-          from,
-          to
-        }
-      ], {}),
-    )
+    console.log('rebuild')
+    let projectConfigPath = path.resolve(cml.projectRoot,'project.config.json');
+    //新增配置，将project.config.json 和 云函数目录copy到对应的仓库即可
+    if(fs.existsSync(projectConfigPath) && fs.statSync(projectConfigPath).isFile()){
+      const projectConfigJson = JSON.parse(fs.readFileSync(projectConfigPath));
+      const outputPath = webpackConfig.output.path;
+      const from = path.resolve(cml.projectRoot,projectConfigJson.cloudfunctionRoot);
+      const to = path.resolve(outputPath,projectConfigJson.cloudfunctionRoot);
+      const fromJson = path.resolve(cml.projectRoot,'project.config.json');
+      const toJson = path.resolve(outputPath,'project.config.json');
+      webpackConfig.plugins.push(
+        new CopyWebpackPlugin([
+          {
+            from,
+            to
+          }
+        ], {}),
+      ),
+      webpackConfig.plugins.push(
+        new CopyWebpackPlugin([
+          {
+            from:fromJson,
+            to:toJson
+          }
+        ], {}),
+      )
+    }
+    
   }
   return { type, media, webpackConfig }
 })
