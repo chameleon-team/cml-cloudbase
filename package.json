@@ -13,5 +13,8 @@
     "chameleon-ui-builtin": "1.0.0",
     "cml-ui": "1.0.0",
     "tcb-js-sdk": "^1.3.4-beta.4"
+  },
+  "devDependencies": {
+    "copy-webpack-plugin": "^4.5.2"
   }
 }

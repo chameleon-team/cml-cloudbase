@@ -3,7 +3,8 @@
 const publicPath = '//www.static.chameleon.com/cml';
 // 设置api请求前缀
 const apiPrefix = 'https://api.chameleon.com';
-
+const path = require('path');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 cml.config.merge({
   enableLinter: false,
   check: {
@@ -61,7 +62,20 @@ cml.config.merge({
   },
   cloudConfig:{
     wx:{
-      test:222,
+      "miniprogramRoot": "miniRoot/",
+      "cloudfunctionRoot": "cloudfunctions/",
+      "setting": {
+        "urlCheck": true,
+        "es6": true,
+        "postcss": true,
+        "minified": true,
+        "newFeature": true,
+        "enhance": true
+      },
+      "appid": "wx2dd60ffdc3f8f2bb",
+      "projectname": "cml-cloud",
+      "libVersion": "2.8.1",
+      "simulatorType": "wechat"
     }
   }
 })
@@ -69,8 +83,21 @@ cml.utils.plugin('webpackConfig', function(params) {
   let { type, media, webpackConfig } = params
   if (type === 'wx') {
     debugger;
-    console.log(cml.config.get().cloudConfig)
-    console.log(cml.projectRoot)
+    const wxCloudConfig = cml.config.get().cloudConfig.wx;//拿到微信小程序云开发的配置，这里可以进行你想要的操作；
+    const outputPath = webpackConfig.output.path;
+    webpackConfig.output.path = path.resolve(outputPath,wxCloudConfig.miniprogramRoot)
+    console.log(cml.config.get().cloudConfig.wx)
+    console.log(cml.projectRoot);
+    const from = path.resolve(cml.projectRoot,wxCloudConfig.cloudfunctionRoot);
+    const to = path.resolve(outputPath,wxCloudConfig.cloudfunctionRoot);
+    webpackConfig.plugins.push(
+      new CopyWebpackPlugin([
+        {
+          from,
+          to
+        }
+      ], {}),
+    )
   }
   return { type, media, webpackConfig }
 })
