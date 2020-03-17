@@ -1,4 +1,22 @@
-## 目标：兼容小程序云开发
+## <img src="https://cml.js.org/doc/assets/100*100.png"/> [Chameleon](https://github.com/didi/chameleon)
+
+## Chameleon的终极目标是实现“一套代码，多端运行”
+
+[github地址](https://github.com/didi/chameleon)，欢迎各位  <a class="github-button" href="https://github.com/didi/chameleon" data-icon="octicon-star" aria-label="Star didi/chameleon on GitHub">Star</a>  我们，你们的支持是我们最大的动力。
+
+
+[官网](https://cmljs.org/#/)
+
+一个小的案例：
+
+<a href="https://github.com/beatles-chameleon/cml-demo">
+<img src="https://cml.js.org/doc/assets/efficient.gif" width="400px"/>
+</a>
+
+
+
+
+## 本仓库目标：兼容小程序云开发
 
 本仓库主要提供一个如何通过 chameleon-tool 开发小程序端的云开发案例;
 因为各端的兼容性问题，目前云开发暂时不集成到 chameleon 命令行内部，提供通过配置的方式进行兼容云开发，具体实现步骤如下；
@@ -103,6 +121,8 @@ cml.utils.plugin('webpackConfig', function(params) {
 ### 4 开发尝试
 
 在项目根目录执行 `cml wx dev -n` ; 用微信开发者工具打开 `dist/wx` 即可看到效果；
+
+### 5 目前chameleon内部已经集成支持project.config.json的配置以及云函数的生成，发布之后则不再需要步骤3的操作，敬请期待！
 
 
 
