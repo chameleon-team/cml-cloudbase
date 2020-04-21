@@ -122,7 +122,7 @@ cml.utils.plugin('webpackConfig', function(params) {
 
 在项目根目录执行 `cml wx dev -n` ; 用微信开发者工具打开 `dist/wx` 即可看到效果；
 
-### 5 目前chameleon内部已经集成支持project.config.json的配置以及云函数的生成，发布之后则不再需要步骤3的操作，敬请期待！
+### 5 目前chameleon内部已经集成支持project.config.json的配置以及云函数的生成，不再需要步骤3的操作，具体参考：https://github.com/chameleon-team/miniapp-enhance-demo
 
 
 
